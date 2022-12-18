@@ -1,0 +1,41 @@
+﻿@model List<Subject>
+
+<div class="get-div">
+    <h1 class="table-title">Subject</h1>
+
+    <div style="margin-top: 20px;">
+    <a class="menu-item-btn" href="/Class/Get">Class</a>
+    <a class="menu-item-btn" href="/ClassType/Get">Class Type</a>
+    <a class="menu-item-btn" href="/Schedule/Get">Schedule</a>
+    <a class="menu-item-btn" href="/Student/Get">Student</a>
+    <a class="menu-item-btn" href="/Subject/Get">Subject</a>
+    <a class="menu-item-btn" href="/Teacher/Get">Teacher</a>
+</div>
+
+    <a class="menu-item-btn" style="margin-top: 10px;" href="/Subject/Create">Create</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var subject in @Model)
+            {
+                <tr>
+                    <td>@subject.Id</td>
+                    <td>@subject.Name</td>
+                    <td>@subject.Description</td>
+                    <td><a href="/Subject/Update?id=@subject.Id">Update</a></td>
+                    <td><a href="/Subject/Delete?id=@subject.Id">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

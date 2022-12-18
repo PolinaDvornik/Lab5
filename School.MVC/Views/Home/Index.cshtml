@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+
+<div class="text-center">
+    <h1 class="display-4" style="margin-top: 200px;">Welcome!</h1>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <br />
+
+        <br />
+        <a style="color: #0A99E0; font-size: 130%;" href="/Home/Main">Home</a>
+
+        <p></p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+    }
+    else
+    {
+            <p></p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+    }
+</div>

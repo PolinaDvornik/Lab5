@@ -1,0 +1,59 @@
+﻿@model TeacherCreatedViewModel
+
+@{
+    var positions = Model.Positions
+        .Select(i => new SelectListItem() { Text = i, Value = i });
+}
+
+<div id="main">
+    <h2 style="text-shadow: 0 0 10px white">Teacher creation</h2>
+
+<div style="margin-top: 20px;">
+    <a style="margin: 0 10px 0 0;" class="menu-item-btn" href="/Class/Get">Class</a>
+    <a class="menu-item-btn" href="/ClassType/Get">ClassType</a>
+    <a class="menu-item-btn" href="/Schedule/Get">Schedule</a>
+    <a class="menu-item-btn" href="/Student/Get">Student</a>
+    <a class="menu-item-btn" href="/Subject/Get">Subject</a>
+    <a class="menu-item-btn" href="/Teacher/Get">Teacher</a>
+</div>
+
+    <form class="changing-form" method="post" asp-action="Create">
+        <div class="field-container">
+            <label style="font-weight: bold; text-shadow: 0 0 10px white;" asp-for="Surname"></label>
+            <div>
+                <input class="input-props" asp-for="Surname" />
+                <span class="error-mes-span" style="color: red; font-size: 90%;" asp-validation-for="Surname"></span>
+            </div>
+        </div>
+
+        <div class="field-container">
+            <label style="font-weight: bold; text-shadow: 0 0 10px white;" asp-for="Name"></label>
+            <div>
+                <input class="input-props" asp-for="Name" />
+                <span class="error-mes-span" style="color: red; font-size: 90%;" asp-validation-for="Name"></span>
+            </div>
+        </div>
+        
+        <div class="field-container">
+            <label style="font-weight: bold; text-shadow: 0 0 10px white;" asp-for="MiddleName">Middle name</label>
+            <div>
+                <input class="input-props" asp-for="MiddleName" />
+                <span class="error-mes-span" style="color: red; font-size: 90%;" asp-validation-for="MiddleName"></span>
+            </div>
+        </div>
+
+        <div class="field-container">
+            <label style="font-weight: bold; text-shadow: 0 0 10px white;" asp-for="Position"></label>
+            <div>
+                <select class="select-props" asp-for="Position" asp-items="@positions"></select>
+            </div>
+        </div>
+
+        <button class="action-btn" type="submit">Submit</button>
+    </form>
+</div>
+
+<p></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

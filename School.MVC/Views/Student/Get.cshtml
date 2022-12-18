@@ -1,0 +1,95 @@
+﻿@model StudentViewModel
+
+@{
+    var subjects = Model.Subjects
+        .Select(i => new SelectListItem() { Text = i, Value = i });
+
+    var classes = Model.Classes
+        .Select(i => new SelectListItem() { Text = i, Value = i });
+
+    var classTypes = Model.ClassTypes
+        .Select(i => new SelectListItem() { Text = i, Value = i });
+}
+
+<div class="get-div">
+    <h1 class="table-title">Student</h1>
+
+    <div style="margin-top: 20px;">
+        <a class="menu-item-btn" href="/Class/Get">Class</a>
+        <a class="menu-item-btn" href="/ClassType/Get">Class Type</a>
+        <a class="menu-item-btn" href="/Schedule/Get">Schedule</a>
+        <a class="menu-item-btn" href="/Student/Get">Student</a>
+        <a class="menu-item-btn" href="/Subject/Get">Subject</a>
+        <a class="menu-item-btn" href="/Teacher/Get">Teacher</a>
+    </div>
+
+    <a class="menu-item-btn" style="margin-top: 10px;" href="/Student/Create">Create</a>
+
+    <form class="searching-form" asp-action="Search" method="get">
+        <div>
+            <label>Class:&nbsp;&nbsp;</label>
+            <select class="select-props" name="classNumber" asp-items="@classes">
+                <option selected></option>
+            </select>
+        </div>
+
+        <div>
+            <label>Class type:&nbsp;&nbsp;</label>
+            <select class="select-props" name="classType" asp-items="@classTypes">
+                <option selected></option>
+            </select>
+        </div>
+
+        <div>
+            <label>Age (> 4):&nbsp;&nbsp;</label>
+            <input class="input-props" type="number" name="age" style="width: 150px;"/>
+        </div>
+
+        <div>
+            <label>Subject:&nbsp;&nbsp;</label>
+            <select class="select-props" name="subject" asp-items="@subjects">
+                <option selected></option>
+            </select>
+        </div>
+        
+        <br />
+        <button style="margin-top: 10px" class="action-btn" type="submit">Search</button>
+    </form>  
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Full Name</th>
+                <th>Birth date</th>
+                <th>Sex</th>
+                <th>Address</th>
+                <th>Mother Full Name</th>
+                <th>Futher Full Name</th>
+                <th>Additional Info</th>
+                <th>Class</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in @Model.Students)
+            {
+                string sex = student.Sex ? "male" : "female";
+                <tr>
+                    <td>@student.Id</td>
+                    <td>@student.Surname @student.Name @student.MiddleName</td>
+                    <td>@student.BirthDate</td>
+                    <td>@sex</td>
+                    <td>@student.Address</td>
+                    <td>@student.MotherFullName</td>
+                    <td>@student.FutherFullName</td>
+                    <td>@student.AdditionalInfo</td>
+                    <td>@student.Class.Number</td>
+                    <td><a href="/Student/Update?id=@student.Id">Update</a></td>
+                    <td><a href="/Student/Delete?id=@student.Id">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

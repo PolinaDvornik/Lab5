@@ -1,0 +1,63 @@
+﻿@model ScheduleUpdatedViewModel
+
+@{
+    var teachers = Model.Teachers
+        .Select(i => new SelectListItem() { Text = i, Value = i });
+
+    var classes = Model.Classes
+        .Select(i => new SelectListItem() { Text = i, Value = i });
+
+    var subjects = Model.Subjects
+        .Select(i => new SelectListItem() { Text = i, Value = i });
+}
+
+<div id="main">
+    <h2 style="text-shadow: 0 0 10px white">Schedule update</h2>
+
+    <div style="margin-top: 20px;">
+        <a style="margin: 0 10px 0 0;" class="menu-item-btn" href="/Class/Get">Class</a>
+        <a class="menu-item-btn" href="/ClassType/Get">ClassType</a>
+        <a class="menu-item-btn" href="/Schedule/Get">Schedule</a>
+        <a class="menu-item-btn" href="/Student/Get">Student</a>
+        <a class="menu-item-btn" href="/Subject/Get">Subject</a>
+        <a class="menu-item-btn" href="/Teacher/Get">Teacher</a>
+    </div>
+
+    <form class="changing-form" method="post" asp-action="Update">
+        <div class="field-container">
+            <label style="font-weight: bold; text-shadow: 0 0 10px white;" asp-for="DateTime">Date and time</label>
+            <div>
+                <input class="input-props" asp-for="DateTime" type="datetime-local" />
+                <span class="error-mes-span" style="color: red; font-size: 90%;" asp-validation-for="DateTime"></span>
+            </div>
+        </div>
+
+        <div class="field-container">
+            <label style="font-weight: bold; text-shadow: 0 0 10px white;" asp-for="Class"></label>
+            <div>
+                <select class="select-props" asp-for="Class" asp-items="@classes"></select>
+            </div>
+        </div>
+
+        <div class="field-container">
+            <label style="font-weight: bold; text-shadow: 0 0 10px white;" asp-for="Subject"></label>
+            <div>
+                <select class="select-props" asp-for="Subject" asp-items="@subjects"></select>
+            </div>
+        </div>
+
+        <div class="field-container">
+            <label style="font-weight: bold; text-shadow: 0 0 10px white;" asp-for="Teacher"></label>
+            <div>
+                <select class="select-props" asp-for="Teacher" asp-items="@teachers"></select>
+            </div>
+        </div>
+
+        <button class="action-btn" type="submit">Submit</button>
+    </form>
+</div>
+
+<p></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

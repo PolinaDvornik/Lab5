@@ -1,0 +1,147 @@
+﻿body {
+    margin: 0 auto;
+    padding: 0;
+    background: url(https://abrakadabra.fun/uploads/posts/2022-03/1647523596_1-abrakadabra-fun-p-goluboi-fon-shkolnii-1.png);
+    background-size: 100%;
+    color: #0A99E0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul > li {
+    margin-top: 10px;
+    margin-bottom: 20px;
+} 
+
+ul a {
+    margin-top: 20px;
+    color: #0A99E0;
+    text-decoration: none;
+    font-size: 170%;
+    text-shadow: none;
+}
+
+ul a:hover {
+    text-shadow: 0 0 10px #03ADFE;
+}
+
+.get-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    font-weight: bold;
+    box-sizing: border-box;
+    padding: 0 50px 0 50px;
+}
+
+table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+    text-align: left;
+    border-collapse: collapse;
+    border-radius: 5px;
+    box-shadow: 0 0 0 5px #0A99E0;
+    color: #0A99E0;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+th {
+    padding: 10px 8px;
+    background: white;
+}
+
+table th:first-child {
+    border-top-left-radius: 5px;
+}
+
+table th:last-child {
+    border-top-right-radius: 5px;
+}
+
+td {
+    border-top: 3px solid #0A99E0;
+    padding: 8px;
+    background: #E8F7FE;
+}
+
+table td:first-child {
+    border-bottom-left-radius: 5px;
+}
+
+table td:last-child {
+    border-bottom-right-radius: 5px;
+}
+
+.menu-item-btn {
+    color: #0A99E0;
+    text-shadow: 0 0 10px white;
+    font-size: 120%;
+    margin: 0 10px 0 10px;
+}
+
+.changing-form {
+    margin-top: 10px;
+}
+
+.action-btn {
+    width: 100px;
+    text-align: center;
+    padding: 7px 0 7px 0;
+    border: 1px solid #0A99E0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    color: #0A99E0;
+    font-size: 100%;
+    border-radius: 5px;
+    transition: all 0.3s;
+    box-shadow: none;
+}
+
+    .action-btn:hover {
+        box-shadow: 0 0 10px #0A99E0;
+        transition: all 0.3s;
+    }
+
+.table-title {
+    font-size: 280%;
+    display: block;
+    padding: 5px 10px;
+    background-color: rgba(253, 253, 253, 0.7);
+    border-radius: 10px;
+}
+
+.input-props {
+    width: 300px;
+    padding: 5px 5px 5px 5px;
+    border-radius: 5px;
+    border: 1px solid #0A99E0;
+    margin-top: 10px;
+}
+
+.field-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.select-props {
+    padding: 5px 5px 5px 5px;
+    border-radius: 5px;
+    border: 1px solid #0A99E0;
+    margin-top: 10px;
+}
+
+.searching-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 20px;
+    margin-top: 10px;
+}

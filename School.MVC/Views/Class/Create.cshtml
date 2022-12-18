@@ -1,0 +1,67 @@
+﻿@model ClassCreatedViewModel
+
+@{
+    var teachers = Model.Teachers
+        .Select(i => new SelectListItem() { Text = i, Value = i });
+
+    var classTypes = Model.ClassTypes
+        .Select(i => new SelectListItem() { Text = i, Value = i });
+}
+
+<div id="main">
+    <h2 style="text-shadow: 0 0 10px white">Class creation</h2>
+
+    <div style="margin-top: 20px;">
+        <a style="margin: 0 10px 0 0;" class="menu-item-btn" href="/Class/Get">Class</a>
+        <a class="menu-item-btn" href="/ClassType/Get">ClassType</a>
+        <a class="menu-item-btn" href="/Schedule/Get">Schedule</a>
+        <a class="menu-item-btn" href="/Student/Get">Student</a>
+        <a class="menu-item-btn" href="/Subject/Get">Subject</a>
+        <a class="menu-item-btn" href="/Teacher/Get">Teacher</a>
+    </div>
+
+    <form class="changing-form" method="post" asp-action="Create">
+        <div class="field-container">
+            <label style="font-weight: bold; text-shadow: 0 0 10px white;" asp-for="Number"></label>
+            <div>
+                <input class="input-props" asp-for="Number"/>
+                <span class="error-mes-span" style="color: red; font-size: 90%;" asp-validation-for="Number"></span>
+            </div>
+        </div>
+
+        <div class="field-container">
+            <label style="font-weight: bold; text-shadow: 0 0 10px white;" asp-for="StudentsCount">Count of students</label>
+            <div>
+                <input class="input-props" asp-for="StudentsCount" type="number"/>
+                <span class="error-mes-span" style="color: red; font-size: 90%;" asp-validation-for="StudentsCount"></span>
+            </div>
+        </div>
+
+        <div class="field-container">
+            <label style="font-weight: bold; text-shadow: 0 0 10px white;" asp-for="CreationYear">Year of creation</label>
+            <div>
+                <input class="input-props" asp-for="CreationYear" type="number"/>
+                <span class="error-mes-span" style="color: red; font-size: 90%;" asp-validation-for="CreationYear"></span>
+            </div>
+        </div>
+
+        <div class="field-container">
+            <label style="font-weight: bold; text-shadow: 0 0 10px white;" asp-for="ClassType">Class type</label>
+            <div>
+                <select class="select-props" asp-for="ClassType" asp-items="@classTypes"></select>
+            </div>
+        </div>
+
+        <div class="field-container">
+            <label style="font-weight: bold; text-shadow: 0 0 10px white;" asp-for="Teacher">Classroom teacher</label>
+            <div>
+                <select class="select-props" asp-for="Teacher" asp-items="@teachers"></select>
+            </div>
+        </div>
+
+        <button class="action-btn" type="submit">Submit</button>
+    </form>
+</div>
+
+<p></p>
+<p>&nbsp;</p>

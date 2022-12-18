@@ -1,0 +1,48 @@
+﻿@model List<Schedule>
+
+<div class="get-div">
+    <h1 class="table-title">Schedule</h1>
+
+    <div style="margin-top: 20px;">
+    <a class="menu-item-btn" href="/Class/Get">Class</a>
+    <a class="menu-item-btn" href="/ClassType/Get">Class Type</a>
+    <a class="menu-item-btn" href="/Schedule/Get">Schedule</a>
+    <a class="menu-item-btn" href="/Student/Get">Student</a>
+    <a class="menu-item-btn" href="/Subject/Get">Subject</a>
+    <a class="menu-item-btn" href="/Teacher/Get">Teacher</a>
+</div>
+
+    <a class="menu-item-btn" style="margin-top: 10px;" href="/Schedule/Create">Create</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Day of week</th>
+                <th>Time</th>
+                <th>Class</th>
+                <th>Teacher</th>
+                <th>Subject</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var schedule in @Model)
+            {
+                <tr>
+                    <td>@schedule.Id</td>
+                    <td>@schedule.Date.Date</td>
+                    <td>@schedule.DayOfWeek</td>
+                    <td>@schedule.StartLessonTime - @schedule.EndLessonTime</td>
+                    <td>@schedule.Class.Number</td>
+                    <td>@schedule.Teacher.Surname @schedule.Teacher.Name @schedule.Teacher.MiddleName</td>
+                    <td>@schedule.Subject.Name</td>
+                    <td><a href="/Schedule/Update?id=@schedule.Id">Update</a></td>
+                    <td><a href="/Schedule/Delete?id=@schedule.Id">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

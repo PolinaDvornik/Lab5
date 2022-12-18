@@ -1,0 +1,89 @@
+﻿@model ClassViewModel
+
+@{
+    var classTypes = Model.ClassTypes
+        .Select(i => new SelectListItem() { Text = i, Value = i });
+
+    var daysOfWeekList = new List<string>();
+
+    foreach (int i in Enum.GetValues(typeof(DayOfWeek)))
+        daysOfWeekList.Add(Convert.ToString((DayOfWeek)Enum.GetValues(typeof(DayOfWeek)).GetValue(i)));
+
+    var daysOfWeek = daysOfWeekList.Select(i => new SelectListItem() { Text = i, Value = i });
+}
+
+<div class="get-div">
+    <h1 class="table-title">Class</h1>
+
+    <div style="margin-top: 20px;">
+    <a class="menu-item-btn" href="/Class/Get">Class</a>
+    <a class="menu-item-btn" href="/ClassType/Get">Class Type</a>
+    <a class="menu-item-btn" href="/Schedule/Get">Schedule</a>
+    <a class="menu-item-btn" href="/Student/Get">Student</a>
+    <a class="menu-item-btn" href="/Subject/Get">Subject</a>
+    <a class="menu-item-btn" href="/Teacher/Get">Teacher</a>
+</div>
+
+    <a class="menu-item-btn" style="margin-top: 10px;" href="/Class/Create">Create</a>
+
+    <form class="searching-form" asp-action="Search" method="get">
+        <div>
+            <label>Class type:&nbsp;&nbsp;</label>
+            <select class="select-props" name="classType" asp-items="@classTypes">
+                <option selected></option>
+            </select>
+        </div>
+
+        <div>
+            <label>Creation year:&nbsp;&nbsp;</label>
+            <input class="input-props" type="number" name="creationYear" style="width: 150px;"/>
+        </div>
+
+        <div>
+            <label>Count of students:&nbsp;&nbsp;</label>
+            <input class="input-props" type="number" name="studentsCount" style="width: 150px;" />
+        </div>
+
+        <div>
+            <label style="margin-top: 10px">Class by day of week and count of lessons:</label>
+            <br />
+            <select class="select-props" name="dayOfWeek" asp-items="@daysOfWeek" style="margin-left: 10px">
+                <option selected></option>
+            </select>
+            <input class="input-props" type="number" name="lessonCount" style="width: 150px; margin-left: 20px;" />
+        </div>
+
+        <br />
+        <button style="margin-top: 10px" class="action-btn" type="submit">Search</button>
+    </form> 
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Number</th>
+                <th>Count of students</th>
+                <th>Creation Year</th>
+                <th>Classroom teacher</th>
+                <th>Type of class</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var classModel in @Model.Classes)
+            {
+                <tr>
+                    <td>@classModel.Id</td>
+                    <td>@classModel.Number</td>
+                    <td>@classModel.StudentsCount</td>
+                    <td>@classModel.CreationYear</td>
+                    <td>@classModel.ClassroomTeacher.Surname @classModel.ClassroomTeacher.Name @classModel.ClassroomTeacher.MiddleName, @classModel.ClassroomTeacher.Position</td>
+                    <td>@classModel.ClassType.Name</td>
+                    <td><a href="/Class/Update?id=@classModel.Id">Update</a></td>
+                    <td><a href="/Class/Delete?id=@classModel.Id">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

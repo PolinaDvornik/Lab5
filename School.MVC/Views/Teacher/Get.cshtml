@@ -1,0 +1,67 @@
+﻿@model TeacherViewModel
+
+@{
+    var subjects = Model.Subjects
+        .Select(i => new SelectListItem() { Text = i, Value = i });
+
+    var classes = Model.Classes
+        .Select(i => new SelectListItem() { Text = i, Value = i });
+}
+
+<div class="get-div">
+    <h1 class="table-title">Teacher</h1>
+
+    <div style="margin-top: 20px;">
+    <a class="menu-item-btn" href="/Class/Get">Class</a>
+    <a class="menu-item-btn" href="/ClassType/Get">Class Type</a>
+    <a class="menu-item-btn" href="/Schedule/Get">Schedule</a>
+    <a class="menu-item-btn" href="/Student/Get">Student</a>
+    <a class="menu-item-btn" href="/Subject/Get">Subject</a>
+    <a class="menu-item-btn" href="/Teacher/Get">Teacher</a>
+</div>
+
+    <a class="menu-item-btn" style="margin-top: 10px;" href="/Teacher/Create">Create</a>
+
+    <form class="searching-form" asp-action="Search" method="get">
+        <div>
+            <label>Subject:&nbsp;&nbsp;</label>
+            <select class="select-props" name="subject" asp-items="@subjects">
+                <option selected></option>
+            </select>
+        </div>
+        
+        <div>
+            <label>Class:&nbsp;&nbsp;</label>
+            <select class="select-props" name="classNumber" asp-items="@classes">
+                <option selected></option>
+            </select>
+        </div>
+        
+        <br />
+        <button style="margin-top: 10px" class="action-btn" type="submit">Search</button>
+    </form>  
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Full Name</th>
+                <th>Position</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var teacher in @Model.Teachers)
+            {
+                    <tr>
+                        <td>@teacher.Id</td>
+                        <td>@teacher.Surname @teacher.Name @teacher.MiddleName</td>
+                        <td>@teacher.Position</td>
+                    <td><a href="/Teacher/Update?id=@teacher.Id">Update</a></td>
+                    <td><a href="/Teacher/Delete?id=@teacher.Id">Delete</a></td>
+                    </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,32 @@
+﻿@model Subject
+
+<div id="main">
+    <h2 style="text-shadow: 0 0 10px white">Subject delete</h2>
+
+    <div style="margin-top: 20px;">
+        <a style="margin: 0 10px 0 0;" class="menu-item-btn" href="/Class/Get">Class</a>
+        <a class="menu-item-btn" href="/ClassType/Get">ClassType</a>
+        <a class="menu-item-btn" href="/Schedule/Get">Schedule</a>
+        <a class="menu-item-btn" href="/Student/Get">Student</a>
+        <a class="menu-item-btn" href="/Subject/Get">Subject</a>
+        <a class="menu-item-btn" href="/Teacher/Get">Teacher</a>
+    </div>
+
+    <form class="changing-form" method="post" asp-action="Delete" style="margin-top: 20px">
+        <h5>Name: @Model.Name <br />
+            Description: @Model.Description</h5>
+
+        <button class="action-btn" type="submit">Delete</button>
+    </form>
+</div>
+
+<p></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
